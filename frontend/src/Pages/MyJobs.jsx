@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const MyJobs = () => {
   const [jobs, setJobs] = useState([])
@@ -50,17 +51,46 @@ const MyJobs = () => {
   }
 
   const handleDelete = (id) => {
-    fetch(`https://ksc-job-portal.vercel.app/job/${id}`, {
-      method: 'DELETE',
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You wan't to delete this job?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://ksc-job-portal.vercel.app/job/${id}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged === true) {
+              setRefresh(true)
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'Your Job has been deleted.',
+                icon: 'success',
+              })
+            }
+          })
+      }
     })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged === true) {
-          alert('Deleted successfully')
-          setRefresh(true)
-        }
-      })
   }
+
+  // const handleDelete = (id) => {
+  //   fetch(`https://ksc-job-portal.vercel.app/job/${id}`, {
+  //     method: 'DELETE',
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.acknowledged === true) {
+  //         alert('Deleted successfully')
+  //         setRefresh(true)
+  //       }
+  //     })
+  // }
 
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4">
@@ -133,7 +163,7 @@ const MyJobs = () => {
                 </thead>
 
                 {isLoading ? (
-                  <div className="flex items-center justify-center h-screen w-screen">
+                  <div className="flex items-center justify-center h-30 mx-auto">
                     <span className="loading loading-spinner text-primary"></span>
                     <span className="loading loading-spinner text-secondary"></span>
                     <span className="loading loading-spinner text-accent"></span>

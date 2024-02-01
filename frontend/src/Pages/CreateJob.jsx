@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import CreatableSelect from 'react-select/creatable'
+import Swal from 'sweetalert2'
 
 const CreateJob = () => {
   const [selectedOption, setSelectedOptions] = useState(null)
@@ -26,9 +27,15 @@ const CreateJob = () => {
       .then((result) => {
         console.log(result)
         if (result.acknowledged === true) {
-          alert('Job Posted Successfully')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Job Uploaded Successfully',
+            showConfirmButton: false,
+            timer: 2000,
+          })
         }
-        // reset()
+        reset()
       })
   }
 

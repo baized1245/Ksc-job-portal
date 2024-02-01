@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import CreatableSelect from 'react-select/creatable'
 import { useLoaderData, useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const UpdateJob = () => {
   const { id } = useParams()
@@ -43,9 +44,15 @@ const UpdateJob = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result)
+        // console.log(result)
         if (result.acknowledged === true) {
-          alert('Job updated Successfully')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Job Uploaded Successfully',
+            showConfirmButton: false,
+            timer: 2000,
+          })
         }
         // reset()
       })

@@ -116,7 +116,16 @@ const Home = () => {
         {/* job cards */}
         <div className="col-span-2 bg-white p-4 rounded-sm">
           {isLoading ? (
-            <p className="font-medium ">Loading....</p>
+            <div className="flex items-center justify-center h-96 mx-auto my-auto">
+              <span className="loading loading-spinner text-primary"></span>
+              <span className="loading loading-spinner text-secondary"></span>
+              <span className="loading loading-spinner text-accent"></span>
+              <span className="loading loading-spinner text-neutral"></span>
+              <span className="loading loading-spinner text-info"></span>
+              <span className="loading loading-spinner text-success"></span>
+              <span className="loading loading-spinner text-warning"></span>
+              <span className="loading loading-spinner text-error"></span>
+            </div>
           ) : result.length > 0 ? (
             <Jobs result={result} />
           ) : (
