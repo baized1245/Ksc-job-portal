@@ -13,7 +13,7 @@ const MyJobs = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch(`http://localhost:5000/myJobs/bhsadhin@gmail.com`)
+    fetch(`https://ksc-job-portal.vercel.app/myJobs/bhsadhin@gmail.com`)
       .then((res) => res.json())
       .then((data) => {
         setJobs(data)
@@ -50,7 +50,7 @@ const MyJobs = () => {
   }
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/job/${id}`, {
+    fetch(`https://ksc-job-portal.vercel.app/job/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

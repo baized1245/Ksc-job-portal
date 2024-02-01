@@ -15,7 +15,7 @@ const CreateJob = () => {
   const onSubmit = (data) => {
     data.skills = selectedOption
     // console.log(data)
-    fetch('http://localhost:5000/all-job', {
+    fetch('https://ksc-job-portal.vercel.app/all-job', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

@@ -9,7 +9,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 app.use(express.json())
 app.use(
   cors({
-    origin: 'https://mern-book-store-1028f.web.app',
+    origin: 'https://job-portal-d8491.web.app',
     method: ['POST', 'GET', 'PATCH', 'PUT', 'DELETE'],
     credential: true,
   })

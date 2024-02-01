@@ -6,7 +6,7 @@ const JobDetails = () => {
   const { id } = useParams()
   const [job, setJob] = useState([])
   useEffect(() => {
-    fetch(`http://localhost:5000/all-jobs/${id}`)
+    fetch(`https://ksc-job-portal.vercel.app/all-jobs/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data)

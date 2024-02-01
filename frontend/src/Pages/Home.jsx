@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch('http://localhost:5000/all-jobs')
+    fetch('https://ksc-job-portal.vercel.app/all-jobs')
       .then((res) => res.json())
       .then((data) => {
         setJobs(data)
