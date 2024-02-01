@@ -7,7 +7,13 @@ const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 
 // middleware
 app.use(express.json())
-app.use(cors())
+app.use(
+  cors({
+    origin: 'https://mern-book-store-1028f.web.app',
+    method: ['POST', 'GET', 'PATCH', 'PUT', 'DELETE'],
+    credential: true,
+  })
+)
 
 // mongodb
 const uri =
